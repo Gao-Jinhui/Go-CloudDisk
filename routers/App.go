@@ -7,6 +7,6 @@ import (
 
 func Router() *gin.Engine {
 	r := gin.Default()
-	r.GET("/test", controllers.Test)
+	r.GET("/test", controllers.TestController)
 	return r
 }

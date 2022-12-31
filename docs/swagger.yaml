@@ -1,0 +1,14 @@
+info:
+  contact: {}
+paths:
+  /test:
+    get:
+      responses:
+        "200":
+          description: code","message"} 成功后返回值
+          schema:
+            type: string
+      summary: 获取用户信息
+      tags:
+      - 用户模块
+swagger: "2.0"

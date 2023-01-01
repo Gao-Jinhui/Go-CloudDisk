@@ -12,6 +12,9 @@ func Router() *gin.Engine {
 	r := gin.Default()
 	docs.SwaggerInfo.BasePath = "" //TODO:?
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
-	r.GET("/test", controllers.TestController)
+	userRouter := r.Group("/user")
+	{
+		userRouter.POST("/createUser", controllers.CreateUserController)
+	}
 	return r
 }

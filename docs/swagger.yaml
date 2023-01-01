@@ -1,14 +1,49 @@
+definitions:
+  models.CreateUserRequest:
+    properties:
+      name:
+        type: string
+      password:
+        type: string
+      repassword:
+        type: string
+    required:
+    - name
+    - password
+    - repassword
+    type: object
+  models.CreateUserResponse:
+    properties:
+      code:
+        description: Id   string `json:"id"`
+        type: integer
+      data:
+        type: string
+      msg:
+        type: string
+    type: object
 info:
   contact: {}
 paths:
-  /test:
-    get:
+  /user/createUser:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请示参数data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateUserRequest'
+      produces:
+      - application/json
       responses:
         "200":
-          description: code","message"} 成功后返回值
+          description: 请求成功
           schema:
-            type: string
-      summary: 获取用户信息
+            $ref: '#/definitions/models.CreateUserResponse'
+      summary: 创建用户
       tags:
       - 用户模块
 swagger: "2.0"

@@ -23,7 +23,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.CreateUserRequest"
+                            "$ref": "#/definitions/v1.CreateUserRequest"
                         }
                     }
                 ],
@@ -31,7 +31,40 @@
                     "200": {
                         "description": "请求成功",
                         "schema": {
-                            "$ref": "#/definitions/models.CreateUserResponse"
+                            "$ref": "#/definitions/v1.CreateUserResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/deleteUser": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户模块"
+                ],
+                "summary": "删除用户",
+                "parameters": [
+                    {
+                        "description": "请示参数data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.DeleteUserRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求成功",
+                        "schema": {
+                            "$ref": "#/definitions/v1.DeleteUserResponse"
                         }
                     }
                 }
@@ -39,12 +72,11 @@
         }
     },
     "definitions": {
-        "models.CreateUserRequest": {
+        "v1.CreateUserRequest": {
             "type": "object",
             "required": [
                 "name",
-                "password",
-                "repassword"
+                "password"
             ],
             "properties": {
                 "name": {
@@ -52,21 +84,42 @@
                 },
                 "password": {
                     "type": "string"
-                },
-                "repassword": {
-                    "type": "string"
                 }
             }
         },
-        "models.CreateUserResponse": {
+        "v1.CreateUserResponse": {
             "type": "object",
             "properties": {
                 "code": {
                     "description": "Id   string `json:\"id\"`",
                     "type": "integer"
                 },
-                "data": {
+                "msg": {
                     "type": "string"
+                }
+            }
+        },
+        "v1.DeleteUserRequest": {
+            "type": "object",
+            "required": [
+                "name",
+                "password"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.DeleteUserResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "Id   string `json:\"id\"`",
+                    "type": "integer"
                 },
                 "msg": {
                     "type": "string"

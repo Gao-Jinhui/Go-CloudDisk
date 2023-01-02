@@ -1,24 +1,37 @@
 definitions:
-  models.CreateUserRequest:
+  v1.CreateUserRequest:
     properties:
       name:
         type: string
       password:
         type: string
-      repassword:
-        type: string
     required:
     - name
     - password
-    - repassword
     type: object
-  models.CreateUserResponse:
+  v1.CreateUserResponse:
     properties:
       code:
         description: Id   string `json:"id"`
         type: integer
-      data:
+      msg:
         type: string
+    type: object
+  v1.DeleteUserRequest:
+    properties:
+      name:
+        type: string
+      password:
+        type: string
+    required:
+    - name
+    - password
+    type: object
+  v1.DeleteUserResponse:
+    properties:
+      code:
+        description: Id   string `json:"id"`
+        type: integer
       msg:
         type: string
     type: object
@@ -35,15 +48,36 @@ paths:
         name: data
         required: true
         schema:
-          $ref: '#/definitions/models.CreateUserRequest'
+          $ref: '#/definitions/v1.CreateUserRequest'
       produces:
       - application/json
       responses:
         "200":
           description: 请求成功
           schema:
-            $ref: '#/definitions/models.CreateUserResponse'
+            $ref: '#/definitions/v1.CreateUserResponse'
       summary: 创建用户
+      tags:
+      - 用户模块
+  /user/deleteUser:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请示参数data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/v1.DeleteUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 请求成功
+          schema:
+            $ref: '#/definitions/v1.DeleteUserResponse'
+      summary: 删除用户
       tags:
       - 用户模块
 swagger: "2.0"

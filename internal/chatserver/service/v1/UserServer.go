@@ -1,4 +1,4 @@
-package userServer
+package v1
 
 import (
 	"go-chat/internal/pkg/model/chatserver/v1"

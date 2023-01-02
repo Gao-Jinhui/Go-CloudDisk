@@ -2,7 +2,7 @@ package test
 
 import (
 	"fmt"
-	"go-chat/models"
+	"go-chat/internal/pkg/model/chatserver/v1"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"time"
@@ -15,8 +15,8 @@ func main() {
 		fmt.Println("failed to open database")
 	}
 
-	db.AutoMigrate(&models.UserBasic{})
+	db.AutoMigrate(&v1.UserBasic{})
 
-	user := &models.UserBasic{Name: "test1", LoginTime: time.Now(), HeartbeatTime: time.Now(), LoginOutTime: time.Now()}
+	user := &v1.UserBasic{Name: "test1", LoginTime: time.Now(), HeartbeatTime: time.Now(), LoginOutTime: time.Now()}
 	db.Create(user)
 }

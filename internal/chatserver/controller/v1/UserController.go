@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	userServer "go-chat/internal/chatserver/service/v1"
 	"go-chat/internal/pkg/model/chatserver/v1"
-	e2 "go-chat/pkg/e"
+	e "go-chat/pkg/e"
 	"go-chat/pkg/utils"
 	"net/http"
 )
@@ -14,19 +14,43 @@ import (
 // @Tags 用户模块
 // @Accept  json
 // @Produce  json
-// @Param data body models.CreateUserRequest true "请示参数data"
-// @Success 200 {object} models.CreateUserResponse "请求成功"
+// @Param data body v1.CreateUserRequest true "请示参数data"
+// @Success 200 {object} v1.CreateUserResponse "请求成功"
 // @Router /user/createUser [post]
 func CreateUserController(c *gin.Context) {
 	request := new(v1.CreateUserRequest)
 	response := new(v1.CreateUserResponse)
-	response.Code = utils.BindAndValidateParams(c, request)
-	response.Msg = e2.GetMsg(response.Code)
-	if response.Code != e2.SUCCESS {
+	if code := utils.BindAndValidateParams(c, request); code != e.Success {
+		response.Code = code
+		response.Msg = e.GetMsg(response.Code)
 		c.JSON(http.StatusOK, response)
 		return
 	}
-	response.Data = userServer.CreateUser(request)
+	response.Code = userServer.CreateUser(request)
+	response.Msg = e.GetMsg(response.Code)
+	c.JSON(http.StatusOK, response)
+	return
+}
+
+// DeleteUserController
+// @Summary 删除用户
+// @Tags 用户模块
+// @Accept  json
+// @Produce  json
+// @Param data body v1.DeleteUserRequest true "请示参数data"
+// @Success 200 {object} v1.DeleteUserResponse "请求成功"
+// @Router /user/deleteUser [post]
+func DeleteUserController(c *gin.Context) {
+	request := new(v1.DeleteUserRequest)
+	response := new(v1.DeleteUserResponse)
+	if code := utils.BindAndValidateParams(c, request); code != e.Success {
+		response.Code = code
+		response.Msg = e.GetMsg(response.Code)
+		c.JSON(http.StatusOK, response)
+		return
+	}
+	response.Code = userServer.DeleteUser(request)
+	response.Msg = e.GetMsg(response.Code)
 	c.JSON(http.StatusOK, response)
 	return
 }

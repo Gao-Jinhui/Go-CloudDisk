@@ -9,11 +9,11 @@ import (
 
 func BindAndValidateParams(c *gin.Context, request interface{}) int {
 	if err := c.ShouldBindJSON(request); err != nil {
-		return e.INVALID_PARAMS
+		return e.InvalidParams
 	}
 	validate := validator.New()
 	if err := validate.Struct(request); err != nil {
-		return e.ERROR_VALIDATOR
+		return e.ErrorValidator
 	}
-	return e.SUCCESS
+	return e.Success
 }

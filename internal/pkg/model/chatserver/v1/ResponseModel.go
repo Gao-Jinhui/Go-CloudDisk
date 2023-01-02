@@ -8,5 +8,8 @@ type BaseResponse struct {
 
 type CreateUserResponse struct {
 	BaseResponse
-	Data string `json:"data"`
+}
+
+type DeleteUserResponse struct {
+	BaseResponse
 }

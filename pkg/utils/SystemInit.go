@@ -11,7 +11,7 @@ var DB *gorm.DB
 
 func InitConfig() {
 	viper.SetConfigName("app")
-	viper.AddConfigPath("config")
+	viper.AddConfigPath("../../config")
 	err := viper.ReadInConfig()
 	if err != nil {
 		fmt.Println(err)

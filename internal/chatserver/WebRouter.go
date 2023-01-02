@@ -1,4 +1,4 @@
-package routers
+package chatserver
 
 import (
 	"github.com/gin-gonic/gin"

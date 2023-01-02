@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"go-chat/e"
+	"go-chat/pkg/e"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"

@@ -1,7 +1,7 @@
-package models
+package v1
 
 import (
-	"go-chat/utils"
+	"go-chat/pkg/utils"
 	"gorm.io/gorm"
 	"time"
 )

@@ -4,8 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"go-chat/controllers"
 	"go-chat/docs"
+	"go-chat/internal/chatserver/controller/v1"
 )
 
 func Router() *gin.Engine {
@@ -14,7 +14,7 @@ func Router() *gin.Engine {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	userRouter := r.Group("/user")
 	{
-		userRouter.POST("/createUser", controllers.CreateUserController)
+		userRouter.POST("/createUser", v1.CreateUserController)
 	}
 	return r
 }

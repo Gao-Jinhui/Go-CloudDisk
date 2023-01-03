@@ -18,38 +18,17 @@ import (
 // @Success 200 {object} v1.CreateUserResponse "请求成功"
 // @Router /user/createUser [post]
 func CreateUserController(c *gin.Context) {
-	request := new(v1.CreateUserRequest)
+	request := new(v1.UserBasic)
 	response := new(v1.CreateUserResponse)
 	if code := utils.BindAndValidateParams(c, request); code != e.Success {
 		response.Code = code
-		response.Msg = e.GetMsg(response.Code)
-		c.JSON(http.StatusOK, response)
-		return
+	} else {
+		if !request.IsSufficientToLogin() {
+			response.Code = e.InsufficientParameters
+		} else {
+			response.Code = userServer.CreateUser(request)
+		}
 	}
-	response.Code = userServer.CreateUser(request)
-	response.Msg = e.GetMsg(response.Code)
-	c.JSON(http.StatusOK, response)
-	return
-}
-
-// DeleteUserController
-// @Summary 删除用户
-// @Tags 用户模块
-// @Accept  json
-// @Produce  json
-// @Param data body v1.DeleteUserRequest true "请示参数data"
-// @Success 200 {object} v1.DeleteUserResponse "请求成功"
-// @Router /user/deleteUser [post]
-func DeleteUserController(c *gin.Context) {
-	request := new(v1.DeleteUserRequest)
-	response := new(v1.DeleteUserResponse)
-	if code := utils.BindAndValidateParams(c, request); code != e.Success {
-		response.Code = code
-		response.Msg = e.GetMsg(response.Code)
-		c.JSON(http.StatusOK, response)
-		return
-	}
-	response.Code = userServer.DeleteUser(request)
 	response.Msg = e.GetMsg(response.Code)
 	c.JSON(http.StatusOK, response)
 	return

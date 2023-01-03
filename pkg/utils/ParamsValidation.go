@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"go-chat/pkg/e"
 
 	"github.com/gin-gonic/gin"
@@ -9,11 +10,12 @@ import (
 
 func BindAndValidateParams(c *gin.Context, request interface{}) int {
 	if err := c.ShouldBindJSON(request); err != nil {
-		return e.InvalidParams
+		return e.InvalidRequest
 	}
 	validate := validator.New()
 	if err := validate.Struct(request); err != nil {
-		return e.ErrorValidator
+		fmt.Println(err.Error())
+		return e.InvalidParams
 	}
 	return e.Success
 }

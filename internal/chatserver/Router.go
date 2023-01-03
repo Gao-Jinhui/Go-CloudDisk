@@ -14,7 +14,6 @@ func Router() *gin.Engine {
 	userRouter := r.Group("/user")
 	{
 		userRouter.POST("/createUser", v1.CreateUserController)
-		userRouter.POST("/deleteUser", v1.DeleteUserController)
 	}
 	return r
 }

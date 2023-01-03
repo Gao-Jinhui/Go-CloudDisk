@@ -5,23 +5,21 @@ import (
 	"go-chat/internal/pkg/model/chatserver/v1"
 	"go-chat/pkg/e"
 	"go-chat/pkg/utils"
-	"gorm.io/gorm"
 )
 
-func CreateUser(request *v1.CreateUserRequest) int {
-	if _, err := mysql.FindUserByName(request.Name); err != gorm.ErrRecordNotFound {
+func CreateUser(request *v1.UserBasic) int {
+	if _, err := mysql.FindUserByName(request.Name); err != utils.ErrRecordNotFound {
 		return e.ErrorExistUser
 	}
-	mysql.CreateUser(request.Name, request.Password)
-	return e.Success
-}
-
-func DeleteUser(request *v1.DeleteUserRequest) int {
-	err := mysql.DeleteUserByNameAndPassword(request.Name, request.Password)
-	if err == utils.ErrWrongPassword {
-		return e.ErrorWrongPassword
-	} else if err == gorm.ErrRecordNotFound {
-		return e.ErrorNotExistUser
+	if _, err := mysql.FindUserByPhone(request.Phone); err != utils.ErrRecordNotFound {
+		return e.ErrorExistUser
 	}
+	if _, err := mysql.FindUserByEmail(request.Email); err != utils.ErrRecordNotFound {
+		return e.ErrorExistUser
+	}
+	request.UpdateLoginInTime()
+	request.UpdateHeartbeatTime()
+	request.UpdateLoginOutTime()
+	mysql.CreateUser(request)
 	return e.Success
 }

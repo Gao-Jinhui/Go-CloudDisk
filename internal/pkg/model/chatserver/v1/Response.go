@@ -5,11 +5,3 @@ type BaseResponse struct {
 	Code int    `json:"code"`
 	Msg  string `json:"msg"`
 }
-
-type CreateUserResponse struct {
-	BaseResponse
-}
-
-type DeleteUserResponse struct {
-	BaseResponse
-}

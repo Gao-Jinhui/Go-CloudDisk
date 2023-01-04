@@ -2,12 +2,13 @@ package main
 
 import (
 	"go-chat/internal/chatserver"
-	"go-chat/pkg/utils"
+	"go-chat/pkg/System"
 )
 
 func main() {
-	utils.InitConfig()
-	utils.InitMySQl()
+	system.InitLogger()
+	system.InitConfig()
+	system.InitMySQl()
 	r := chatserver.Router()
 	err := r.Run()
 	if err != nil {

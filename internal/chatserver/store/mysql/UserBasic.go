@@ -3,9 +3,9 @@ package mysql
 import (
 	"fmt"
 	"github.com/pkg/errors"
+	"go-chat/internal/pkg/errno"
 	"go-chat/internal/pkg/model/chatserver/v1"
-	"go-chat/pkg/System"
-	"go-chat/pkg/errno"
+	"go-chat/internal/pkg/system"
 	"golang.org/x/net/context"
 	"gorm.io/gorm"
 )

@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"go-chat/pkg/errno"
+	"go-chat/internal/pkg/errno"
 	"gorm.io/gorm"
 	"time"
 )

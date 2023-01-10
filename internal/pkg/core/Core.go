@@ -2,8 +2,8 @@ package core
 
 import (
 	"github.com/gin-gonic/gin"
+	"go-chat/internal/pkg/errno"
 	v1 "go-chat/internal/pkg/model/chatserver/v1"
-	"go-chat/pkg/errno"
 	"net/http"
 )
 

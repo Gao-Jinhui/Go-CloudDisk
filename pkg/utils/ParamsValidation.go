@@ -2,10 +2,9 @@ package utils
 
 import (
 	"fmt"
-	"go-chat/pkg/errno"
-
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
+	"go-chat/internal/pkg/errno"
 )
 
 func BindAndValidateParams(c *gin.Context, request interface{}) error {

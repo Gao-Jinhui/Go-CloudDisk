@@ -4,9 +4,9 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"go-chat/internal/chatserver/store/mysql"
+	"go-chat/internal/pkg/errno"
 	"go-chat/internal/pkg/model/chatserver/v1"
 	"go-chat/pkg/auth"
-	"go-chat/pkg/errno"
 	"golang.org/x/net/context"
 )
 

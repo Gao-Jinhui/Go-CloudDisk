@@ -3,9 +3,9 @@ package v1
 import (
 	"github.com/gin-gonic/gin"
 	userServer "go-chat/internal/chatserver/service/v1"
+	"go-chat/internal/pkg/core"
 	"go-chat/internal/pkg/model/chatserver/v1"
-	system "go-chat/pkg/System"
-	"go-chat/pkg/core"
+	"go-chat/internal/pkg/system"
 	"go-chat/pkg/utils"
 )
 

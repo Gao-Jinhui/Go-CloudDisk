@@ -1,4 +1,4 @@
-package v1
+package response
 
 type BaseResponse struct {
 	//Id   string `json:"id"`

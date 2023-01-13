@@ -1,17 +1,17 @@
-package v1
+package userServer
 
 import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"go-chat/internal/chatserver/store/mysql"
 	"go-chat/internal/pkg/errno"
-	"go-chat/internal/pkg/model/chatserver/v1"
+	"go-chat/internal/pkg/model/v1/userModel"
 	"go-chat/pkg/auth"
 	"golang.org/x/net/context"
 )
 
-func CreateUser(ctx context.Context, request *v1.UserBasic) error {
-	ctx.Value("logger").(*logrus.Entry).Info("create user start")
+func CreateUser(ctx context.Context, request *userModel.UserBasic) error {
+	ctx.Value("logger").(*logrus.Entry).Info("start to create user")
 	isNewUser := false
 	if _, err := mysql.FindUserByName(ctx, request.Name); errors.Is(err, errno.ErrUserNotFound) {
 		isNewUser = true

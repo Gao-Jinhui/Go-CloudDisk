@@ -1,6 +1,6 @@
-package v1
+package request
 
-type DeleteUserRequest struct {
+type DeleteUser struct {
 	Name     string `json:"name" validate:"required"`
 	Password string `json:"password" validate:"required"`
 }

@@ -16,9 +16,9 @@ func InitLogger() {
 	Logger.SetOutput(ansicolor.NewAnsiColorWriter(os.Stdout))
 }
 
-func GetLoggerEntry(traceId string) *logrus.Entry {
+func GetLoggerEntry(service string) *logrus.Entry {
 	entry := Logger.WithFields(logrus.Fields{
-		"trace_id": traceId,
+		"service": service,
 	})
 	return entry
 }

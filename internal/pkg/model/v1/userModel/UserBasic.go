@@ -1,4 +1,4 @@
-package v1
+package userModel
 
 import (
 	"go-chat/internal/pkg/errno"

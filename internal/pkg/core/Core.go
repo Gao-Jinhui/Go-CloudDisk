@@ -3,14 +3,14 @@ package core
 import (
 	"github.com/gin-gonic/gin"
 	"go-chat/internal/pkg/errno"
-	v1 "go-chat/internal/pkg/model/chatserver/v1"
+	"go-chat/internal/pkg/model/v1/response"
 	"net/http"
 )
 
 func WriteResponse(c *gin.Context, err error, data interface{}) {
 	if err != nil {
 		code, msg := errno.DecodeErr(err)
-		c.JSON(http.StatusOK, v1.BaseResponse{
+		c.JSON(http.StatusOK, response.BaseResponse{
 			Code: code,
 			Msg:  msg,
 		})

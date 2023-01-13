@@ -37,11 +37,13 @@ var (
 	// ErrPasswordIncorrect represents the password is incorrect.
 	ErrPasswordIncorrect = &Errno{Code: 20105, Message: "Password was incorrect."}
 
-	// ErrPostNotFound represents  the post not found.
-	ErrPostNotFound = &Errno{Code: 20201, Message: "Post was not found."}
+	// ErrPublishMsg Failed to publish message to redis
+	ErrRedisPubMsg = &Errno{Code: 20201, Message: "Failed to publish message to redis."}
 
 	// ErrPostAlreadyExist represents the post already exist.
 	ErrPostAlreadyExist = &Errno{Code: 20202, Message: "Post already exist."}
 
 	ErrInsufficientParameters = &Errno{Code: 20301, Message: "IsSufficient parameter to login in."}
+
+	ErrWsPubMsg = &Errno{Code: 20401, Message: "Failed to publish message to websocket"}
 )

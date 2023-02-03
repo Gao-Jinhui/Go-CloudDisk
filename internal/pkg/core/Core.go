@@ -10,7 +10,7 @@ import (
 func WriteResponse(c *gin.Context, err error, data interface{}) {
 	if err != nil {
 		code, msg := errno.DecodeErr(err)
-		c.JSON(http.StatusOK, response.BaseResponse{
+		c.JSON(http.StatusBadRequest, response.BaseResponse{
 			Code: code,
 			Msg:  msg,
 		})

@@ -3,7 +3,7 @@ package userServer
 import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"go-chat/internal/chatserver/store/mysql"
+	"go-chat/internal/cloudserver/store/mysql"
 	"go-chat/internal/pkg/errno"
 	"go-chat/internal/pkg/model/v1/userModel"
 	"go-chat/pkg/auth"

@@ -2,7 +2,7 @@ package userController
 
 import (
 	"github.com/gin-gonic/gin"
-	"go-chat/internal/chatserver/service/v1/userServer"
+	"go-chat/internal/cloudserver/service/v1/userServer"
 	"go-chat/internal/pkg/core"
 	"go-chat/internal/pkg/model/v1/response"
 	"go-chat/internal/pkg/model/v1/userModel"
